@@ -223,13 +223,13 @@ namespace ISM6225_Spring_2024_Assignment_2
                 {
                     if (nums[i] != 0)
                     {
-                        // If current element is non-zero, move it to nonZeroIndex and increment nonZeroIndex
-                        nums[nonZeroIndex++] = nums[i];
+                        nums[nonZeroIndex++] = nums[i];  // If current element is non-zero, move it to nonZeroIndex and increment nonZeroIndex
+
                     }
                     else
                     {
-                        // Increment zero count
-                        zeroCount++;
+                        
+                        zeroCount++;// Increment zero count
                     }
                 }
                 while (zeroCount > 0)
@@ -290,22 +290,20 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Check if the array is null or empty
-                if (nums == null || nums.Length < 3)
+                
+                if (nums == null || nums.Length < 3)// Check if the array is null or empty
                     return new List<IList<int>>();
 
-                // Sort the array in ascending order
-                Array.Sort(nums);
+                
+                Array.Sort(nums);// Sort the array in ascending order
 
                 List<IList<int>> result = new List<IList<int>>();
 
-                // Iterate through the array
-                for (int i = 0; i < nums.Length - 2; i++)
+                
+                for (int i = 0; i < nums.Length - 2; i++)// Iterate through the array
                 {
-                    // Skip duplicate elements
-                    if (i > 0 && nums[i] == nums[i - 1])
+                    if (i > 0 && nums[i] == nums[i - 1])// Skip duplicate elements
                         continue;
-
                     int left = i + 1, right = nums.Length - 1;
 
                     while (left < right)
@@ -313,10 +311,9 @@ namespace ISM6225_Spring_2024_Assignment_2
                         int sum = nums[i] + nums[left] + nums[right];
                         if (sum == 0)
                         {
-                            // Add valid triplet to result
                             result.Add(new List<int> { nums[i], nums[left], nums[right] });
-                            // Skip duplicate elements
-                            while (left < right && nums[left] == nums[left + 1])
+                            
+                            while (left < right && nums[left] == nums[left + 1])// Skip duplicate elements
                                 left++;
                             while (left < right && nums[right] == nums[right - 1])
                                 right--;
@@ -378,18 +375,16 @@ namespace ISM6225_Spring_2024_Assignment_2
                 {
                     if (num == 1)
                     {
-                        // Increment current count of consecutive ones
-                        currentCount++;
-                        // Update max count if necessary
-                        maxCount = Math.Max(maxCount, currentCount);
+                        
+                       currentCount++;// Increment current count of consecutive ones
+                        maxCount = Math.Max(maxCount, currentCount);// Update max count if necessary
                     }
                     else
                     {
-                        // Reset current count
-                        currentCount = 0;
+                        
+                        currentCount = 0;// Reset current count
                     }
                 }
-                // Max count represents the maximum consecutive ones found in the array
                 return maxCount;
             }
             catch (Exception)
@@ -428,22 +423,17 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Convert binary number to string to iterate through each digit
-                string binaryStr = binary.ToString();
+                string binaryStr = binary.ToString();// Convert binary number to string to iterate through each digit
 
                 int decimalNumber = 0;
                 int baseValue = 1;
 
                 for (int i = binaryStr.Length - 1; i >= 0; i--)
                 {
-                    // Convert char to int
-                    int digit = binaryStr[i] - '0';
-
-                    // Update decimal number
-                    decimalNumber += digit * baseValue;
-
-                    // Update base value for next digit
-                    baseValue *= 2;
+                    
+                    int digit = binaryStr[i] - '0';// Convert char to int
+                    decimalNumber += digit * baseValue;// Update decimal number
+                    baseValue *= 2;// Update base value for next digit
                 }
 
                 return decimalNumber;
@@ -488,12 +478,10 @@ namespace ISM6225_Spring_2024_Assignment_2
                 if (nums == null || nums.Length < 2)
                     return 0;
 
-                // Sort the array in ascending order
-                Array.Sort(nums);
+                
+                Array.Sort(nums);// Sort the array in ascending order
 
-                // Use LINQ to calculate the differences between adjacent elements and find the maximum difference
-                int maxGap = nums.Zip(nums.Skip(1), (x, y) => y - x).Max();
-
+                int maxGap = nums.Zip(nums.Skip(1), (x, y) => y - x).Max(); // Use LINQ to calculate the differences between adjacent elements and find the maximum difference
                 return maxGap;
             }
             catch (Exception)
@@ -541,16 +529,15 @@ namespace ISM6225_Spring_2024_Assignment_2
                 if (nums == null || nums.Length < 3)
                     return 0;
 
-                // Sort the array in ascending order to make it easier to identify triangle sides
-                Array.Sort(nums);
+                
+                Array.Sort(nums);// Sort the array in ascending order to make it easier to identify triangle sides
 
-                // Initialize a variable to hold the largest perimeter found
-                int largestPerimeter = 0;
+                int largestPerimeter = 0;// Initialize a variable to hold the largest perimeter found
 
                 for (int i = nums.Length - 1; i >= 2; i--)
                 {
-                    // Extract the lengths of the potential sides of a triangle
-                    int sideA = nums[i];
+                    
+                    int sideA = nums[i];// Extract the lengths of the potential sides of a triangle
                     int sideB = nums[i - 1];
                     int sideC = nums[i - 2];
 
@@ -617,8 +604,7 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Replace occurrences of 'part' with an empty string until no more occurrences are found
-                while (s.Contains(part))
+                while (s.Contains(part))// Replace occurrences of 'part' with an empty string until no more occurrences are found
                 {
                     s = s.Replace(part, "");
                 }
